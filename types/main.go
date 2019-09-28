@@ -1,7 +1,7 @@
 package types
 
 type SimpleMessage struct {
-  Originalname String
+  Originalname string
   RelayPeerAddr string
   Contents string
 }

@@ -3,68 +3,131 @@ package main
 import (
 	"fmt"
 	"flag"
-//	"https://github.com/escicu/Peerster/types"
+	"github.com/escicu/Peerster/types"
 	"net"
 	"sync"
 	"strings"
 //	"https://github.com/dedis/protobuf"
-	"https://github.com/escicu/Peerster/comm"
+	"github.com/escicu/Peerster/comm"
 )
 
-
-func threadUI(uiport string, peers *[]string ,wg *sync.WaitGroup){
-	defer wg.Done()
-
-	udpaddr,err := net.ResolveUDPAddr("udp", ":"+uiport)
-	ln, err := net.ListenUDP("udp", udpaddr)
-	if err != nil {
-		fmt.Printf("error listenudp %s\n",err)
-	}
-	defer ln.Close()
-
-	const udpmaxsize =1<<16
-
-	buf := make([]byte, udpmaxsize)
-	for {
-		n, addr, err := ln.ReadFrom(buf)
-		if err != nil {
-			fmt.Printf("error %d %s %s",n,addr.Network,addr.String)
-		}
-
-		fmt.Printf("CLIENT MESSAGE %s\nPEERS ",string(buf))
-		for _,v := range *peers{
-			fmt.Printf("%s,",v)
-			sendMessage(v,buf[:n])
-		}
-		fmt.Printf("\n")
-	}
-
+type Gossiper struct{
+	name string
+	gaddr *net.UDPAddr
+	gconnect *net.UDPConn
+	uiconnect *net.UDPConn
+	simplemode bool
+	peerstring string
+	peers []*net.UDPAddr
+}
+func udpaddrequal(a1,a2 *net.UDPAddr) bool{
+	return (a1.Port==a2.Port && a1.IP.Equal(a2.IP))
 }
 
-func threadGossip(gossipaddr string,peers *[]string,wg *sync.WaitGroup){
+func NewGossiper(uiport *string,gossipaddr *string,name *string,peers *string,simple bool,wg *sync.WaitGroup) (*Gossiper,error){
+	var gossiper Gossiper
+
+	udpaddrui,err := net.ResolveUDPAddr("udp", ":"+*uiport)
+	if err != nil {
+		return nil,err
+	}
+	gossiper.gaddr,err = net.ResolveUDPAddr("udp", *gossipaddr)
+	if err != nil {
+		return nil,err
+	}
+
+	peerslice:=strings.Split(*peers,",")
+	var peerstrslice []string
+peeradding:
+	for _,v:=range peerslice{
+		if(v!=""){
+			udpaddradd,err := net.ResolveUDPAddr("udp", v)
+			if err != nil {
+				return nil,err
+			}
+			for _,u:=range gossiper.peers{
+				if(udpaddrequal(udpaddradd,u)){
+					continue peeradding
+				}
+			}
+			gossiper.peers=append(gossiper.peers,udpaddradd)
+			peerstrslice=append(peerstrslice,udpaddradd.String())
+		}
+	}
+
+	gossiper.peerstring=strings.Join(peerstrslice,",")
+
+	gossiper.simplemode=simple
+	gossiper.name=*name
+	gossiper.gconnect, err = net.ListenUDP("udp", gossiper.gaddr)
+	if err != nil {
+		return nil,err
+	}
+	gossiper.uiconnect, err = net.ListenUDP("udp", udpaddrui)
+	if err != nil {
+		return nil,err
+	}
+
+	wg.Add(2)
+	go gossiper.threadGossip(wg)
+	go gossiper.threadUI(wg)
+
+	return &gossiper,nil
+}
+
+func (g *Gossiper) threadUI(wg *sync.WaitGroup){
 	defer wg.Done()
 
-	udpaddr,err := net.ResolveUDPAddr("udp", gossipaddr)
-	ln, err := net.ListenUDP("udp", udpaddr)
-	if err != nil {
-		fmt.Printf("error listenudp %s\n",err)
-	}
-	defer ln.Close()
-
-	const udpmaxsize =1<<16
-
-	buf := make([]byte, udpmaxsize)
 	for {
-		n, addr, err := ln.ReadFrom(buf)
+		n,mess,addr,err:=comm.ReadMessage(g.uiconnect)
 		if err != nil {
-			fmt.Printf("error %d %s %s",n,addr.Network,addr.String)
+			fmt.Printf("error %d %+v",n,addr)
 		}
-		fmt.Printf("SIMPLE MESSAGE origin 000 from aaa contents %s\nPEERS ",string(buf))
-		for _,v := range *peers{
-			fmt.Printf("%s,",v)
-			sendMessage(v,buf[:n])
+
+		smess:=types.SimpleMessage{g.name,g.gaddr.String(),string(mess)}
+		sendpack:=types.GossipPacket{Simple:&smess}
+
+		for _,v:= range g.peers{
+			  comm.SendPacket(&sendpack,g.gconnect,v)
+	  }
+		fmt.Printf("CLIENT MESSAGE %s\n",string(mess))
+	}
+}
+
+
+func (g *Gossiper) threadGossip(wg *sync.WaitGroup){
+	defer wg.Done()
+
+	for {
+		pack,addr,err:=comm.ReadPacket(g.gconnect)
+		if err != nil {
+			fmt.Printf("error threadgossip readpacket %+v, %+v",addr,err)
 		}
-		fmt.Printf("\n")
+
+		ind := -1
+		for i,u:=range g.peers{
+			if(udpaddrequal(addr,u)){
+				ind=i
+				break
+			}
+		}
+
+		if(ind<0){
+			ind=len(g.peers)
+			g.peers=append(g.peers,addr)
+			g.peerstring=g.peerstring+","+addr.String()
+		}
+
+		fmt.Printf("SIMPLE MESSAGE origin %s from %s contents %s\n",pack.Simple.Originalname,pack.Simple.RelayPeerAddr,pack.Simple.Contents)
+
+		simplemess:=pack.Simple
+		simplemess.RelayPeerAddr=g.gaddr.String()
+
+		comm.BroadcastPacket(pack,g.gconnect,g.peers[:ind])
+		comm.BroadcastPacket(pack,g.gconnect,g.peers[ind+1:])
+
+
+		fmt.Printf("PEERS %s\n",g.peerstring)
 	}
 }
 
@@ -77,29 +140,12 @@ func main() {
 	var simple=flag.Bool("simple",false,"run gossiper in simple broadcast mode")
 	flag.Parse()
 
-	peerslice:=strings.Split(*peers,",")
-	uniqpeers:=*peers
-
-	for _,v:=range peerslice{
-		c:=strings.Count(uniqpeers,v)
-		if(c>1){
-			uniqpeers=strings.Replace(uniqpeers,v,"",c-1)
-		}
-	}
-
-
 	var wg sync.WaitGroup
 
-	wg.Add(2)
-	go threadUI(*uiport,&peerslice,&wg)
-	go threadGossip(*gossipaddr,&peerslice,&wg)
-
-	fmt.Printf("uiport : %s\n",*uiport)
-	fmt.Printf("gossipaddr : %s\n",*gossipaddr)
-	fmt.Printf("name : %s\n",*name)
-	fmt.Printf("peers : %s\n",*peers)
-	fmt.Printf("simple : %t\n",*simple)
-	fmt.Printf("uniqpeers : %s\n",uniqpeers)
+	_,err:=NewGossiper(uiport,gossipaddr,name,peers,*simple ,&wg)
+	if err != nil {
+		return
+	}
 
 	wg.Wait()
 }
