@@ -3,10 +3,27 @@ package main
 import (
 	"fmt"
 	"flag"
-//	"https://github.com/escicu/Peerster/types"4
 	"net"
-//	"https://github.com/dedis/protobuf"
+  "github.com/dedis/protobuf"
 )
+
+type Message struct{
+  Text string
+}
+
+func SendMessageClient(message *Message,con net.Conn){
+
+  const udpmaxsize =1<<16
+
+	b,err :=protobuf.Encode(message)
+	if err != nil {
+		fmt.Printf("error comm client encode %+v\n",err)
+	}
+  n, err := con.Write(b)
+  if err != nil {
+    fmt.Printf("error comm client %d, %+v\n",n,err)
+  }
+}
 
 func main() {
 
@@ -19,19 +36,7 @@ func main() {
 	// handle error
 	}
 
-	const udpmaxsize =1<<16
+	mess:=&Message{Text:*msg}
 
-	buf := make([]byte, 20)
-
-	for i := 0; i < 20; i++ {
-		buf[i]=65
-	}
-
-	n, err := con.Write(buf)
-	if err != nil {
-	fmt.Printf("error %d, %s\n",n,err)
-	}
-
-	fmt.Printf("uiport : %s\n",*uiport)
-	fmt.Printf("msg : %s\n",*msg)
+	SendMessageClient(mess,con)
 }
