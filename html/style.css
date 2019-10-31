@@ -17,11 +17,25 @@ table{
 }
 
 #chat {
-  width:80vw;
+  width:50vw;
   height:75vh;
 }
 
-#peers {
+#advanced{
+  width:15vw;
+  height:75vh;
+}
+
+#peers , #origin{
   width:10vw;
   height:75vh;
+}
+
+textarea, input[type=text]{
+  border:#000000 1px solid;
+  width:90%;
+}
+
+input[type=submit],input[type=button]{
+  cursor: pointer;
 }

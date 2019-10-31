@@ -9,7 +9,7 @@ import (
 )
 
 
-func NewGossiper(uiport *string,gossipaddr *string,name *string,peers *string,simple bool, aetimeout uint,wg *sync.WaitGroup) (*Gossiper,error){
+func NewGossiper(uiport *string,gossipaddr *string,name *string,peers *string,simple bool, aetimeout uint,rtimer int,wg *sync.WaitGroup) (*Gossiper,error){
 	var gossiper Gossiper
 
 	udpaddrui,err := net.ResolveUDPAddr("udp", ":"+*uiport)
@@ -63,12 +63,20 @@ peeradding:
 	gossiper.gaddr=*gossipaddr
 	gossiper.antientroptimeout=time.Duration(aetimeout)*time.Second
 	gossiper.acktimeout=time.Duration(10)*time.Second
-	gossiper.originrumor=make(map[string](map[uint32]int))
-	gossiper.originnext=make(map[string]uint32)
+	gossiper.reqtimeout=time.Duration(5)*time.Second
+	gossiper.originstat=make(map[string]*OriginState)
+	gossiper.rttimer=time.Duration(rtimer)*time.Second
+	gossiper.nexthop=make(map[string]*Nexthoptuple)
+	gossiper.privlist=make(map[string][]*PrivateMessage)
 
-	gossiper.originrumor[gossiper.name]=make(map[uint32]int)
-	gossiper.originnext[gossiper.name]=gossiper.seq
+	var ostat OriginState
+	ostat.rumorinlist=make(map[uint32]Rumorlistindextuple)
+	ostat.next=gossiper.seq
+	gossiper.originstat[gossiper.name]=&ostat
 
+	gossiper.listfile=make([]*Fileintern,5)
+	gossiper.hashready=make(map[string]string)
+	gossiper.hashrequested=make(map[string]hashrequesttuple)
 
 
 	rand.Seed(time.Now().UnixNano())
@@ -78,13 +86,25 @@ peeradding:
 		go gossiper.threadUIsimple(wg)
 	} else {
 			go gossiper.threadUIcomplet(wg)
-			tickerantientropy:=time.NewTicker(gossiper.antientroptimeout)
-			go func(){
-				for now := range tickerantientropy.C {
-					gossiper.sendStatPacket(nil)
-					rand.Seed(now.UnixNano())
-				}
-			}()
+			if(aetimeout>0){
+				tickerantientropy:=time.NewTicker(gossiper.antientroptimeout)
+				go func(){
+					for _ = range tickerantientropy.C {
+						gossiper.sendStatPacket(nil)
+					}
+				}()
+			}
+			if(rtimer>0){
+				gossiper.sendRumorMonger(&RumorMessage{gossiper.name,gossiper.seq,""},-1,nil)
+				gossiper.seq++
+				tickerrttimer:=time.NewTicker(gossiper.rttimer)
+				go func(){
+					for _ = range tickerrttimer.C {
+						gossiper.sendRumorMonger(&RumorMessage{gossiper.name,gossiper.seq,""},-1,nil)
+						gossiper.seq++
+					}
+				}()
+			}
 
 	}
 

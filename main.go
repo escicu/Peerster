@@ -15,11 +15,12 @@ func main() {
 	var simple=flag.Bool("simple",false,"run gossiper in simple broadcast mode")
 	var antientropy=flag.Uint("antiEntropy",10,
 		"Use the given timeout in seconds for anti-entropy (relevant only for Part 2). If the flag is absent, the default anti-entropy duration is 10 seconds.")
+	var rtimer=flag.Int("rtimer",0,"Timeout in seconds to send route rumors. 0 (default) means disable sending route rumors.")
 	flag.Parse()
 
 	var wg sync.WaitGroup
 
-	_,err:=NewGossiper(uiport,gossipaddr,name,peers,*simple ,*antientropy ,&wg)
+	_,err:=NewGossiper(uiport,gossipaddr,name,peers,*simple ,*antientropy , *rtimer,&wg)
 	if err != nil {
 		fmt.Printf ("err %+v",err)
 		return
