@@ -4,115 +4,178 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-$.urlParam	html/script_priv.js	/^setInterval(update,1000);$/;"	f
-AckRumor	typesintern.go	/^type AckRumor struct{$/;"	d
-AckRumor	typesintern.go	/^type AckRumor struct{$/;"	t
-AckRumorSlice	typesintern.go	/^type AckRumorSlice []*AckRumor$/;"	d
-AckRumorSlice	typesintern.go	/^type AckRumorSlice []*AckRumor$/;"	t
-BroadcastPacket	comm.go	/^func BroadcastPacket(pack *GossipPacket,con *net.UDPConn,addrList []*net.UDPAddr){$/;"	d
-BroadcastPacket	comm.go	/^func BroadcastPacket(pack *GossipPacket,con *net.UDPConn,addrList []*net.UDPAddr){$/;"	f
+$.urlParam	html/scriptpriv.js	/^setInterval(update,1000);$/;"	f
+AckGossiping	typesintern.go	/^type AckGossiping struct {$/;"	d
+AckGossiping	typesintern.go	/^type AckGossiping struct {$/;"	t
+AckGossipingSlice	typesintern.go	/^type AckGossipingSlice []*AckGossiping$/;"	d
+AckGossipingSlice	typesintern.go	/^type AckGossipingSlice []*AckGossiping$/;"	t
+AckTLC	typesintern.go	/^type AckTLC struct {$/;"	d
+AckTLC	typesintern.go	/^type AckTLC struct {$/;"	t
+AckTLCSlice	typesintern.go	/^type AckTLCSlice []*AckTLC$/;"	d
+AckTLCSlice	typesintern.go	/^type AckTLCSlice []*AckTLC$/;"	t
+BlockPublish	typesextern.go	/^type BlockPublish struct {$/;"	d
+BlockPublish	typesextern.go	/^type BlockPublish struct {$/;"	t
+BroadcastPacket	comm.go	/^func BroadcastPacket(pack *GossipPacket, con *net.UDPConn, addrList []*net.UDPAddr) {$/;"	d
+BroadcastPacket	comm.go	/^func BroadcastPacket(pack *GossipPacket, con *net.UDPConn, addrList []*net.UDPAddr) {$/;"	f
 DataReply	typesextern.go	/^type DataReply struct {$/;"	d
 DataReply	typesextern.go	/^type DataReply struct {$/;"	t
 DataRequest	typesextern.go	/^type DataRequest struct {$/;"	d
 DataRequest	typesextern.go	/^type DataRequest struct {$/;"	t
-Def_hoplimit	typesintern.go	/^	Def_hoplimit=49$/;"	c
-DownloadFileHandler	webhandler.go	/^func (g *Gossiper) DownloadFileHandler(w http.ResponseWriter, r *http.Request){$/;"	d
-DownloadFileHandler	webhandler.go	/^func (g *Gossiper) DownloadFileHandler(w http.ResponseWriter, r *http.Request){$/;"	f
-Enum_routerumlist	typesintern.go	/^	Enum_routerumlist=iota$/;"	c
-Enum_rumorlist	typesintern.go	/^	Enum_rumorlist=iota$/;"	c
-FileDownloadMetaStart	gossiperutil.go	/^func (g *Gossiper) FileDownloadMetaStart(filename string,dest string, hash []byte){$/;"	d
-FileDownloadMetaStart	gossiperutil.go	/^func (g *Gossiper) FileDownloadMetaStart(filename string,dest string, hash []byte){$/;"	f
-FileSharePrepare	gossiperutil.go	/^func (g *Gossiper) FileSharePrepare(name string)(*Fileintern,error){$/;"	d
-FileSharePrepare	gossiperutil.go	/^func (g *Gossiper) FileSharePrepare(name string)(*Fileintern,error){$/;"	f
-Fileintern	typesintern.go	/^type Fileintern struct{$/;"	d
-Fileintern	typesintern.go	/^type Fileintern struct{$/;"	t
-Filemetaprocess	gossiperutil.go	/^func (g *Gossiper) Filemetaprocess(fi *fileindown, metacontent []byte,dest string){$/;"	d
-Filemetaprocess	gossiperutil.go	/^func (g *Gossiper) Filemetaprocess(fi *fileindown, metacontent []byte,dest string){$/;"	f
-GossipPacket	typesextern.go	/^type GossipPacket struct{$/;"	d
-GossipPacket	typesextern.go	/^type GossipPacket struct{$/;"	t
-Gossiper	typesintern.go	/^type Gossiper struct{$/;"	d
-Gossiper	typesintern.go	/^type Gossiper struct{$/;"	t
-IdHandler	webhandler.go	/^func (g *Gossiper) IdHandler(w http.ResponseWriter, r *http.Request){$/;"	d
-IdHandler	webhandler.go	/^func (g *Gossiper) IdHandler(w http.ResponseWriter, r *http.Request){$/;"	f
-Len	typesutil.go	/^func (s AckRumorSlice) Len() int{$/;"	d
-Len	typesutil.go	/^func (s AckRumorSlice) Len() int{$/;"	f
-Less	typesutil.go	/^func (s AckRumorSlice) Less(i, j int) bool{$/;"	d
-Less	typesutil.go	/^func (s AckRumorSlice) Less(i, j int) bool{$/;"	f
+Def_hoplimit	typesintern.go	/^	Def_hoplimit       = 10$/;"	c
+Def_max_budget	typesintern.go	/^	Def_max_budget     = 32$/;"	c
+Def_max_result	typesintern.go	/^	Def_max_result     = 2$/;"	c
+Def_searchringtime	typesintern.go	/^	Def_searchringtime = 1$/;"	c
+DownloadFileHandler	webhandler.go	/^func (g *Gossiper) DownloadFileHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+DownloadFileHandler	webhandler.go	/^func (g *Gossiper) DownloadFileHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
+DownloadSearchedHandler	webhandler.go	/^func (g *Gossiper) DownloadSearchedHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+DownloadSearchedHandler	webhandler.go	/^func (g *Gossiper) DownloadSearchedHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
+Enum_routerumlist	typesintern.go	/^	Enum_routerumlist = iota$/;"	c
+Enum_rumorlist	typesintern.go	/^	Enum_rumorlist    = iota$/;"	c
+Enum_tlclist	typesintern.go	/^	Enum_tlclist      = iota$/;"	c
+FileChunkUpdateAndReconstruct	gossiperfiles.go	/^func (g *Gossiper) FileChunkUpdateAndReconstruct(fi *lockedSearchResult, chunknum uint64) {$/;"	d
+FileChunkUpdateAndReconstruct	gossiperfiles.go	/^func (g *Gossiper) FileChunkUpdateAndReconstruct(fi *lockedSearchResult, chunknum uint64) {$/;"	f
+FileDownloadMetaStart	gossiperfiles.go	/^func (g *Gossiper) FileDownloadMetaStart(filename string, dest string, hash []byte) {$/;"	d
+FileDownloadMetaStart	gossiperfiles.go	/^func (g *Gossiper) FileDownloadMetaStart(filename string, dest string, hash []byte) {$/;"	f
+FileSharePrepare	gossiperfiles.go	/^func (g *Gossiper) FileSharePrepare(name string) error {$/;"	d
+FileSharePrepare	gossiperfiles.go	/^func (g *Gossiper) FileSharePrepare(name string) error {$/;"	f
+Filemetaprocess	gossiperfiles.go	/^func (g *Gossiper) Filemetaprocess(fi *lockedSearchResult, metacontent []byte, metahash []byte, from string, rfs *returnedfilesstruct) {$/;"	d
+Filemetaprocess	gossiperfiles.go	/^func (g *Gossiper) Filemetaprocess(fi *lockedSearchResult, metacontent []byte, metahash []byte, from string, rfs *returnedfilesstruct) {$/;"	f
+GossipPacket	typesextern.go	/^type GossipPacket struct {$/;"	d
+GossipPacket	typesextern.go	/^type GossipPacket struct {$/;"	t
+Gossipedlistindextuple	typesintern.go	/^type Gossipedlistindextuple struct {$/;"	d
+Gossipedlistindextuple	typesintern.go	/^type Gossipedlistindextuple struct {$/;"	t
+Gossiper	typesintern.go	/^type Gossiper struct {$/;"	d
+Gossiper	typesintern.go	/^type Gossiper struct {$/;"	t
+IdHandler	webhandler.go	/^func (g *Gossiper) IdHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+IdHandler	webhandler.go	/^func (g *Gossiper) IdHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
+Len	typesutil.go	/^func (s AckGossipingSlice) Len() int {$/;"	d
+Len	typesutil.go	/^func (s AckGossipingSlice) Len() int {$/;"	f
+Len	typesutil.go	/^func (s AckTLCSlice) Len() int {$/;"	d
+Len	typesutil.go	/^func (s AckTLCSlice) Len() int {$/;"	f
+Less	typesutil.go	/^func (s AckGossipingSlice) Less(i, j int) bool {$/;"	d
+Less	typesutil.go	/^func (s AckGossipingSlice) Less(i, j int) bool {$/;"	f
+Less	typesutil.go	/^func (s AckTLCSlice) Less(i, j int) bool {$/;"	d
+Less	typesutil.go	/^func (s AckTLCSlice) Less(i, j int) bool {$/;"	f
 Message	client/main.go	/^type Message struct {$/;"	d
 Message	client/main.go	/^type Message struct {$/;"	t
 Message	typesextern.go	/^type Message struct {$/;"	d
 Message	typesextern.go	/^type Message struct {$/;"	t
-NewGossiper	gossiper.go	/^func NewGossiper(uiport *string,gossipaddr *string,name *string,peers *string,simple bool, aetimeout uint,rtimer int,wg *sync.WaitGroup) (*Gossiper,error){$/;"	d
-NewGossiper	gossiper.go	/^func NewGossiper(uiport *string,gossipaddr *string,name *string,peers *string,simple bool, aetimeout uint,rtimer int,wg *sync.WaitGroup) (*Gossiper,error){$/;"	f
-Nexthoptuple	typesintern.go	/^type Nexthoptuple struct{$/;"	d
-Nexthoptuple	typesintern.go	/^type Nexthoptuple struct{$/;"	t
-NodeHandler	webhandler.go	/^func (g *Gossiper) NodeHandler(w http.ResponseWriter, r *http.Request){$/;"	d
-NodeHandler	webhandler.go	/^func (g *Gossiper) NodeHandler(w http.ResponseWriter, r *http.Request){$/;"	f
-OriginListHandler	webhandler.go	/^func (g *Gossiper) OriginListHandler(w http.ResponseWriter, r *http.Request){$/;"	d
-OriginListHandler	webhandler.go	/^func (g *Gossiper) OriginListHandler(w http.ResponseWriter, r *http.Request){$/;"	f
-OriginState	typesintern.go	/^type OriginState struct{$/;"	d
-OriginState	typesintern.go	/^type OriginState struct{$/;"	t
+NewGossiper	gossiper.go	/^func NewGossiper(uiport *string, gossipaddr *string, name *string, peers *string, simple bool, aetimeout uint, rtimer int, Nnode int, stubtimout int, print int, hoplim int, wg *sync.WaitGroup) (*Gossiper, error) {$/;"	d
+NewGossiper	gossiper.go	/^func NewGossiper(uiport *string, gossipaddr *string, name *string, peers *string, simple bool, aetimeout uint, rtimer int, Nnode int, stubtimout int, print int, hoplim int, wg *sync.WaitGroup) (*Gossiper, error) {$/;"	f
+Nexthoptuple	typesintern.go	/^type Nexthoptuple struct {$/;"	d
+Nexthoptuple	typesintern.go	/^type Nexthoptuple struct {$/;"	t
+NodeHandler	webhandler.go	/^func (g *Gossiper) NodeHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+NodeHandler	webhandler.go	/^func (g *Gossiper) NodeHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
+OriginListHandler	webhandler.go	/^func (g *Gossiper) OriginListHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+OriginListHandler	webhandler.go	/^func (g *Gossiper) OriginListHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
+OriginState	typesintern.go	/^type OriginState struct {$/;"	d
+OriginState	typesintern.go	/^type OriginState struct {$/;"	t
 PeerStatus	typesextern.go	/^type PeerStatus struct {$/;"	d
 PeerStatus	typesextern.go	/^type PeerStatus struct {$/;"	t
+Printf	gossiper.go	/^func (g *Gossiper) Printf(level int, s string) {$/;"	d
+Printf	gossiper.go	/^func (g *Gossiper) Printf(level int, s string) {$/;"	f
 PrivateMessage	typesextern.go	/^type PrivateMessage struct {$/;"	d
 PrivateMessage	typesextern.go	/^type PrivateMessage struct {$/;"	t
-PrivateMessageHandler	webhandler.go	/^func (g *Gossiper) PrivateMessageHandler(w http.ResponseWriter, r *http.Request){$/;"	d
-PrivateMessageHandler	webhandler.go	/^func (g *Gossiper) PrivateMessageHandler(w http.ResponseWriter, r *http.Request){$/;"	f
-ReadMessageClient	comm.go	/^func ReadMessageClient(con *net.UDPConn) (*Message, *net.UDPAddr, error){$/;"	d
-ReadMessageClient	comm.go	/^func ReadMessageClient(con *net.UDPConn) (*Message, *net.UDPAddr, error){$/;"	f
-ReadPacket	comm.go	/^func ReadPacket(con *net.UDPConn) (*GossipPacket, *net.UDPAddr, error){$/;"	d
-ReadPacket	comm.go	/^func ReadPacket(con *net.UDPConn) (*GossipPacket, *net.UDPAddr, error){$/;"	f
-ReconstructFile	gossiperutil.go	/^func (g *Gossiper) ReconstructFile(name string){$/;"	d
-ReconstructFile	gossiperutil.go	/^func (g *Gossiper) ReconstructFile(name string){$/;"	f
-RumorMessage	typesextern.go	/^type RumorMessage struct{$/;"	d
-RumorMessage	typesextern.go	/^type RumorMessage struct{$/;"	t
-RumorMessageHandler	webhandler.go	/^func (g *Gossiper) RumorMessageHandler(w http.ResponseWriter, r *http.Request){$/;"	d
-RumorMessageHandler	webhandler.go	/^func (g *Gossiper) RumorMessageHandler(w http.ResponseWriter, r *http.Request){$/;"	f
-Rumorlistindextuple	typesintern.go	/^type Rumorlistindextuple struct{$/;"	d
-Rumorlistindextuple	typesintern.go	/^type Rumorlistindextuple struct{$/;"	t
-SendMessage	comm.go	/^func SendMessage(message []byte,con *net.UDPConn,addr *net.UDPAddr){$/;"	d
-SendMessage	comm.go	/^func SendMessage(message []byte,con *net.UDPConn,addr *net.UDPAddr){$/;"	f
+PrivateMessageHandler	webhandler.go	/^func (g *Gossiper) PrivateMessageHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+PrivateMessageHandler	webhandler.go	/^func (g *Gossiper) PrivateMessageHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
+RawLogHandler	webhandler.go	/^func (g *Gossiper) RawLogHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+RawLogHandler	webhandler.go	/^func (g *Gossiper) RawLogHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
+ReadMessageClient	comm.go	/^func ReadMessageClient(con *net.UDPConn) (*Message, *net.UDPAddr, error) {$/;"	d
+ReadMessageClient	comm.go	/^func ReadMessageClient(con *net.UDPConn) (*Message, *net.UDPAddr, error) {$/;"	f
+ReadPacket	comm.go	/^func ReadPacket(con *net.UDPConn) (*GossipPacket, *net.UDPAddr, error) {$/;"	d
+ReadPacket	comm.go	/^func ReadPacket(con *net.UDPConn) (*GossipPacket, *net.UDPAddr, error) {$/;"	f
+ReconstructFile	gossiperfiles.go	/^func (g *Gossiper) ReconstructFile(name string) {$/;"	d
+ReconstructFile	gossiperfiles.go	/^func (g *Gossiper) ReconstructFile(name string) {$/;"	f
+RumorMessage	typesextern.go	/^type RumorMessage struct {$/;"	d
+RumorMessage	typesextern.go	/^type RumorMessage struct {$/;"	t
+RumorMessageHandler	webhandler.go	/^func (g *Gossiper) RumorMessageHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+RumorMessageHandler	webhandler.go	/^func (g *Gossiper) RumorMessageHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
+Search	gossipersearch.go	/^func (g *Gossiper) Search(keywords []string) []*SearchResult {$/;"	d
+Search	gossipersearch.go	/^func (g *Gossiper) Search(keywords []string) []*SearchResult {$/;"	f
+SearchHandler	webhandler.go	/^func (g *Gossiper) SearchHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+SearchHandler	webhandler.go	/^func (g *Gossiper) SearchHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
+SearchReply	typesextern.go	/^type SearchReply struct {$/;"	d
+SearchReply	typesextern.go	/^type SearchReply struct {$/;"	t
+SearchRequest	typesextern.go	/^type SearchRequest struct {$/;"	d
+SearchRequest	typesextern.go	/^type SearchRequest struct {$/;"	t
+SearchResult	typesextern.go	/^type SearchResult struct {$/;"	d
+SearchResult	typesextern.go	/^type SearchResult struct {$/;"	t
+SendMessage	comm.go	/^func SendMessage(message []byte, con *net.UDPConn, addr *net.UDPAddr) {$/;"	d
+SendMessage	comm.go	/^func SendMessage(message []byte, con *net.UDPConn, addr *net.UDPAddr) {$/;"	f
 SendMessageClient	client/main.go	/^func SendMessageClient(message *Message, con net.Conn) {$/;"	d
 SendMessageClient	client/main.go	/^func SendMessageClient(message *Message, con net.Conn) {$/;"	f
-SendPacket	comm.go	/^func SendPacket(pack *GossipPacket,con *net.UDPConn,addr *net.UDPAddr){$/;"	d
-SendPacket	comm.go	/^func SendPacket(pack *GossipPacket,con *net.UDPConn,addr *net.UDPAddr){$/;"	f
-ShareFileHandler	webhandler.go	/^func (g *Gossiper) ShareFileHandler(w http.ResponseWriter, r *http.Request){$/;"	d
-ShareFileHandler	webhandler.go	/^func (g *Gossiper) ShareFileHandler(w http.ResponseWriter, r *http.Request){$/;"	f
+SendPacket	comm.go	/^func SendPacket(pack *GossipPacket, con *net.UDPConn, addr *net.UDPAddr) {$/;"	d
+SendPacket	comm.go	/^func SendPacket(pack *GossipPacket, con *net.UDPConn, addr *net.UDPAddr) {$/;"	f
+ShareFileHandler	webhandler.go	/^func (g *Gossiper) ShareFileHandler(w http.ResponseWriter, r *http.Request) {$/;"	d
+ShareFileHandler	webhandler.go	/^func (g *Gossiper) ShareFileHandler(w http.ResponseWriter, r *http.Request) {$/;"	f
 SimpleMessage	typesextern.go	/^type SimpleMessage struct {$/;"	d
 SimpleMessage	typesextern.go	/^type SimpleMessage struct {$/;"	t
-StatusPacket	typesextern.go	/^type StatusPacket struct{$/;"	d
-StatusPacket	typesextern.go	/^type StatusPacket struct{$/;"	t
-Swap	typesutil.go	/^func (s AckRumorSlice) Swap(i, j int){$/;"	d
-Swap	typesutil.go	/^func (s AckRumorSlice) Swap(i, j int){$/;"	f
-addCheckOrigin	gossiperutil.go	/^func (g *Gossiper) addCheckOrigin(origin string){$/;"	d
-addCheckOrigin	gossiperutil.go	/^func (g *Gossiper) addCheckOrigin(origin string){$/;"	f
-addPeer	gossiperutil.go	/^func (g *Gossiper) addPeer(addr *net.UDPAddr)(int){$/;"	d
-addPeer	gossiperutil.go	/^func (g *Gossiper) addPeer(addr *net.UDPAddr)(int){$/;"	f
-addRumorClient	gossiperutil.go	/^func (g *Gossiper) addRumorClient(rumor *RumorMessage){$/;"	d
-addRumorClient	gossiperutil.go	/^func (g *Gossiper) addRumorClient(rumor *RumorMessage){$/;"	f
-addRumorPeer	gossiperutil.go	/^func (g *Gossiper) addRumorPeer(rumor *RumorMessage) (bool){$/;"	d
-addRumorPeer	gossiperutil.go	/^func (g *Gossiper) addRumorPeer(rumor *RumorMessage) (bool){$/;"	f
-addr	gossiperutil.go	/^	var addr *net.UDPAddr$/;"	d
-antientropy	main.go	/^	var antientropy=flag.Uint("antiEntropy",10,$/;"	d
-backfrontfiledown	webhandler.go	/^type backfrontfiledown struct{$/;"	d
-backfrontfiledown	webhandler.go	/^type backfrontfiledown struct{$/;"	t
-backfrontprivget	webhandler.go	/^type backfrontprivget struct{$/;"	d
-backfrontprivget	webhandler.go	/^type backfrontprivget struct{$/;"	t
+StatusPacket	typesextern.go	/^type StatusPacket struct {$/;"	d
+StatusPacket	typesextern.go	/^type StatusPacket struct {$/;"	t
+Swap	typesutil.go	/^func (s AckGossipingSlice) Swap(i, j int) {$/;"	d
+Swap	typesutil.go	/^func (s AckGossipingSlice) Swap(i, j int) {$/;"	f
+Swap	typesutil.go	/^func (s AckTLCSlice) Swap(i, j int) {$/;"	d
+Swap	typesutil.go	/^func (s AckTLCSlice) Swap(i, j int) {$/;"	f
+TLCAck	typesextern.go	/^type TLCAck PrivateMessage$/;"	d
+TLCAck	typesextern.go	/^type TLCAck PrivateMessage$/;"	t
+TLCMessage	typesextern.go	/^type TLCMessage struct {$/;"	d
+TLCMessage	typesextern.go	/^type TLCMessage struct {$/;"	t
+TxPublish	typesextern.go	/^type TxPublish struct {$/;"	d
+TxPublish	typesextern.go	/^type TxPublish struct {$/;"	t
+acks	gossiperpacketprocess.go	/^		var acks *AckTLC$/;"	d
+addCheckOrigin	gossiperrumortlcnodes.go	/^func (g *Gossiper) addCheckOrigin(origin string) {$/;"	d
+addCheckOrigin	gossiperrumortlcnodes.go	/^func (g *Gossiper) addCheckOrigin(origin string) {$/;"	f
+addPeer	gossiperrumortlcnodes.go	/^func (g *Gossiper) addPeer(addr *net.UDPAddr) int {$/;"	d
+addPeer	gossiperrumortlcnodes.go	/^func (g *Gossiper) addPeer(addr *net.UDPAddr) int {$/;"	f
+addRumorClient	gossiperrumortlcnodes.go	/^func (g *Gossiper) addRumorClient(rumor *RumorMessage) {$/;"	d
+addRumorClient	gossiperrumortlcnodes.go	/^func (g *Gossiper) addRumorClient(rumor *RumorMessage) {$/;"	f
+addRumorPeer	gossiperrumortlcnodes.go	/^func (g *Gossiper) addRumorPeer(rumor *RumorMessage) bool {$/;"	d
+addRumorPeer	gossiperrumortlcnodes.go	/^func (g *Gossiper) addRumorPeer(rumor *RumorMessage) bool {$/;"	f
+addTLCClient	gossiperrumortlcnodes.go	/^func (g *Gossiper) addTLCClient(tlc *TLCMessage) {$/;"	d
+addTLCClient	gossiperrumortlcnodes.go	/^func (g *Gossiper) addTLCClient(tlc *TLCMessage) {$/;"	f
+addTLCPeer	gossiperrumortlcnodes.go	/^func (g *Gossiper) addTLCPeer(tlcm *TLCMessage) bool {$/;"	d
+addTLCPeer	gossiperrumortlcnodes.go	/^func (g *Gossiper) addTLCPeer(tlcm *TLCMessage) bool {$/;"	f
+addr	gossipercomm.go	/^	var addr *net.UDPAddr$/;"	d
+addr	gossiperrumortlcnodes.go	/^	var addr *net.UDPAddr$/;"	d
+aid	gossiperpacketprocess.go	/^			var aid uint32$/;"	d
+aind	gossiperpacketprocess.go	/^		var aind int$/;"	d
+antientropy	main.go	/^	var antientropy = flag.Uint("antiEntropy", 10,$/;"	d
+backfrontfiledown	webhandler.go	/^type backfrontfiledown struct {$/;"	d
+backfrontfiledown	webhandler.go	/^type backfrontfiledown struct {$/;"	t
+backfrontfilesearched	webhandler.go	/^type backfrontfilesearched struct {$/;"	d
+backfrontfilesearched	webhandler.go	/^type backfrontfilesearched struct {$/;"	t
+backfrontprivpost	webhandler.go	/^type backfrontprivpost struct {$/;"	d
+backfrontprivpost	webhandler.go	/^type backfrontprivpost struct {$/;"	t
+bud	client/main.go	/^	var bud = flag.Uint64("budget", 0, "")$/;"	d
 dest	client/main.go	/^	var dest = flag.String("dest", "", "destination for the private message; ​ can be omitted")$/;"	d
+endPendingSearch	gossipersearch.go	/^func (g *Gossiper) endPendingSearch() {$/;"	d
+endPendingSearch	gossipersearch.go	/^func (g *Gossiper) endPendingSearch() {$/;"	f
 file	client/main.go	/^	var file = flag.String("file", "", "file to be indexed by the gossiper")$/;"	d
-fileindown	typesintern.go	/^type fileindown struct{$/;"	d
-fileindown	typesintern.go	/^type fileindown struct{$/;"	t
-gossipaddr	main.go	/^	var gossipaddr=flag.String("gossipAddr","127.0.0.1:5000","ip:port for the gossiper (default \\"127.0.0.1:5000\\")")$/;"	d
+filesearcheddownload	html/script.js	/^function filesearcheddownload(name,hash) {$/;"	f
+filesearcheddownload.obj.Hash	html/script.js	/^          Name:name,$/;"	p
+filesearcheddownload.obj.Name	html/script.js	/^  var obj={$/;"	p
+gossipaddr	main.go	/^	var gossipaddr = flag.String("gossipAddr", "127.0.0.1:5000", "ip:port for the gossiper (default \\"127.0.0.1:5000\\")")$/;"	d
 gossiper	gossiper.go	/^	var gossiper Gossiper$/;"	d
-hashrequesttuple	typesintern.go	/^type hashrequesttuple struct{$/;"	d
-hashrequesttuple	typesintern.go	/^type hashrequesttuple struct{$/;"	t
+hashrequesttuple	typesintern.go	/^type hashrequesttuple struct {$/;"	d
+hashrequesttuple	typesintern.go	/^type hashrequesttuple struct {$/;"	t
+hoplimit	main.go	/^	var hoplimit = flag.Int("hoplimit", Def_hoplimit, "Define hoplimit.")$/;"	d
+hw3ex2	main.go	/^	var hw3ex2 = flag.Bool("hw3ex2", false, "Flag to use blockchain.")$/;"	d
+hw3ex3	main.go	/^	var hw3ex3 = flag.Bool("hw3ex3", false, "Flag to use TLC.")$/;"	d
+hw3ex4	main.go	/^	var hw3ex4 = flag.Bool("hw3ex4", false, "Flag to use ???.")$/;"	d
+key	client/main.go	/^	var key = flag.String("keywords", "", "keywords to search")$/;"	d
+list	webhandler.go	/^		var list []backfrontfilesearched$/;"	d
+lockedSearchResult	typesintern.go	/^type lockedSearchResult struct {$/;"	d
+lockedSearchResult	typesintern.go	/^type lockedSearchResult struct {$/;"	t
 main	client/main.go	/^func main() {$/;"	d
 main	client/main.go	/^func main() {$/;"	f
 main	client/main.go	/^package main$/;"	p
 main	comm.go	/^package main$/;"	p
 main	gossiper.go	/^package main$/;"	p
 main	gossipercomm.go	/^package main$/;"	p
-main	gossiperutil.go	/^package main$/;"	p
+main	gossiperfiles.go	/^package main$/;"	p
+main	gossiperpacketprocess.go	/^package main$/;"	p
+main	gossiperrumortlcnodes.go	/^package main$/;"	p
+main	gossipersearch.go	/^package main$/;"	p
 main	main.go	/^func main() {$/;"	d
 main	main.go	/^func main() {$/;"	f
 main	main.go	/^package main$/;"	p
@@ -122,43 +185,92 @@ main	typesintern.go	/^package main$/;"	p
 main	typesutil.go	/^package main$/;"	p
 main	webhandler.go	/^package main$/;"	p
 msg	client/main.go	/^	var msg = flag.String("msg", "", "message to be sent; if the -dest flag is present, this is a private message, otherwise it’s a rumor message")$/;"	d
-name	main.go	/^	var name=flag.String("name","defaultname","name of the gossiper")$/;"	d
+name	main.go	/^	var name = flag.String("name", "defaultname", "name of the gossiper")$/;"	d
+newSearch	gossipersearch.go	/^func (g *Gossiper) newSearch(sr *SearchRequest) *search {$/;"	d
+newSearch	gossipersearch.go	/^func (g *Gossiper) newSearch(sr *SearchRequest) *search {$/;"	f
+newtlcackwait	gossiperpacketprocess.go	/^				var newtlcackwait AckTLCSlice$/;"	d
+nodename	gossiperfiles.go	/^			var nodename string$/;"	d
 ostat	gossiper.go	/^	var ostat OriginState$/;"	d
-ostat	gossiperutil.go	/^		var ostat OriginState$/;"	d
-peers	main.go	/^	var peers=flag.String("peers","127.0.0.1:5000","comma separated list of peers of the form ip:port")$/;"	d
+ostat	gossiperrumortlcnodes.go	/^		var ostat OriginState$/;"	d
+peers	main.go	/^	var peers = flag.String("peers", "127.0.0.1:5000", "comma separated list of peers of the form ip:port")$/;"	d
 peerstrslice	gossiper.go	/^	var peerstrslice []string$/;"	d
-randomPeer	gossiperutil.go	/^func (g *Gossiper) randomPeer(indexNot int)(int , *net.UDPAddr){$/;"	d
-randomPeer	gossiperutil.go	/^func (g *Gossiper) randomPeer(indexNot int)(int , *net.UDPAddr){$/;"	f
-readMessage	comm.go	/^func readMessage(con *net.UDPConn) (int, []byte, *net.UDPAddr, error){$/;"	d
-readMessage	comm.go	/^func readMessage(con *net.UDPConn) (int, []byte, *net.UDPAddr, error){$/;"	f
+printlevel	main.go	/^	var printlevel = flag.Int("printlevel", 1, "Flag to print old homework message. (default 1)")$/;"	d
+processDataReplyPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processDataReplyPacket(pack *GossipPacket) {$/;"	d
+processDataReplyPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processDataReplyPacket(pack *GossipPacket) {$/;"	f
+processDataRequestPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processDataRequestPacket(pack *GossipPacket) {$/;"	d
+processDataRequestPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processDataRequestPacket(pack *GossipPacket) {$/;"	f
+processPrivatePacket	gossiperpacketprocess.go	/^func (g *Gossiper) processPrivatePacket(pack *GossipPacket) {$/;"	d
+processPrivatePacket	gossiperpacketprocess.go	/^func (g *Gossiper) processPrivatePacket(pack *GossipPacket) {$/;"	f
+processRumorPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processRumorPacket(rum *RumorMessage, indexNot int, addrfrom *net.UDPAddr) {$/;"	d
+processRumorPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processRumorPacket(rum *RumorMessage, indexNot int, addrfrom *net.UDPAddr) {$/;"	f
+processSearchReplyPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processSearchReplyPacket(pack *GossipPacket) {$/;"	d
+processSearchReplyPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processSearchReplyPacket(pack *GossipPacket) {$/;"	f
+processSearchRequestPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processSearchRequestPacket(r *SearchRequest, indexNot int) {$/;"	d
+processSearchRequestPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processSearchRequestPacket(r *SearchRequest, indexNot int) {$/;"	f
+processSimplePacket	gossiperpacketprocess.go	/^func (g *Gossiper) processSimplePacket(pack *GossipPacket, indexNot int) {$/;"	d
+processSimplePacket	gossiperpacketprocess.go	/^func (g *Gossiper) processSimplePacket(pack *GossipPacket, indexNot int) {$/;"	f
+processStatusPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processStatusPacket(status *StatusPacket, indexNot int, addrfrom *net.UDPAddr) {$/;"	d
+processStatusPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processStatusPacket(status *StatusPacket, indexNot int, addrfrom *net.UDPAddr) {$/;"	f
+processTLCAckPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processTLCAckPacket(pack *GossipPacket) {$/;"	d
+processTLCAckPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processTLCAckPacket(pack *GossipPacket) {$/;"	f
+processTLCPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processTLCPacket(tlcm *TLCMessage, indexNot int, addrfrom *net.UDPAddr) {$/;"	d
+processTLCPacket	gossiperpacketprocess.go	/^func (g *Gossiper) processTLCPacket(tlcm *TLCMessage, indexNot int, addrfrom *net.UDPAddr) {$/;"	f
+randomPeer	gossiperrumortlcnodes.go	/^func (g *Gossiper) randomPeer(indexNot int) (int, *net.UDPAddr) {$/;"	d
+randomPeer	gossiperrumortlcnodes.go	/^func (g *Gossiper) randomPeer(indexNot int) (int, *net.UDPAddr) {$/;"	f
+readMessage	comm.go	/^func readMessage(con *net.UDPConn) (int, []byte, *net.UDPAddr, error) {$/;"	d
+readMessage	comm.go	/^func readMessage(con *net.UDPConn) (int, []byte, *net.UDPAddr, error) {$/;"	f
 req	client/main.go	/^	var req = flag.String("request", "", "request a chunk or metafile of this hash")$/;"	d
-rm	thread.go	/^			var rm *RumorMessage$/;"	d
-rms	thread.go	/^						var rms *RumorMessage$/;"	d
-rtimer	main.go	/^	var rtimer=flag.Int("rtimer",0,"Timeout in seconds to send route rumors. 0 (default) means disable sending route rumors.")$/;"	d
-rumordforwardorigin	thread.go	/^			var rumordforwardorigin string$/;"	d
-rumorforwardid	thread.go	/^			var rumorforwardid uint32$/;"	d
-sendAllchunkRequest	gossipercomm.go	/^func (g *Gossiper) sendAllchunkRequest(basefilename string,metacontent []byte,chunkn int,dest string,rfi *fileindown){$/;"	d
-sendAllchunkRequest	gossipercomm.go	/^func (g *Gossiper) sendAllchunkRequest(basefilename string,metacontent []byte,chunkn int,dest string,rfi *fileindown){$/;"	f
-sendDirect	gossipercomm.go	/^func (g *Gossiper) sendDirect(pack *GossipPacket,dest string){$/;"	d
-sendDirect	gossipercomm.go	/^func (g *Gossiper) sendDirect(pack *GossipPacket,dest string){$/;"	f
-sendRumorMonger	gossipercomm.go	/^func (g *Gossiper) sendRumorMonger(rumor *RumorMessage,indexNot int,addrudp *net.UDPAddr){$/;"	d
-sendRumorMonger	gossipercomm.go	/^func (g *Gossiper) sendRumorMonger(rumor *RumorMessage,indexNot int,addrudp *net.UDPAddr){$/;"	f
-sendStatPacket	gossipercomm.go	/^func (g *Gossiper) sendStatPacket(addrudp *net.UDPAddr){$/;"	d
-sendStatPacket	gossipercomm.go	/^func (g *Gossiper) sendStatPacket(addrudp *net.UDPAddr){$/;"	f
-simple	main.go	/^	var simple=flag.Bool("simple",false,"run gossiper in simple broadcast mode")$/;"	d
-threadGossip	thread.go	/^func (g *Gossiper) threadGossip(wg *sync.WaitGroup){$/;"	d
-threadGossip	thread.go	/^func (g *Gossiper) threadGossip(wg *sync.WaitGroup){$/;"	f
-threadUIcomplet	thread.go	/^func (g *Gossiper) threadUIcomplet(wg *sync.WaitGroup){$/;"	d
-threadUIcomplet	thread.go	/^func (g *Gossiper) threadUIcomplet(wg *sync.WaitGroup){$/;"	f
-threadUIsimple	thread.go	/^func (g *Gossiper) threadUIsimple(wg *sync.WaitGroup){$/;"	d
-threadUIsimple	thread.go	/^func (g *Gossiper) threadUIsimple(wg *sync.WaitGroup){$/;"	f
-threadUIweb	thread.go	/^func (g *Gossiper) threadUIweb(){$/;"	d
-threadUIweb	thread.go	/^func (g *Gossiper) threadUIweb(){$/;"	f
-udpaddrequal	typesutil.go	/^func udpaddrequal(a1,a2 *net.UDPAddr) bool{$/;"	d
-udpaddrequal	typesutil.go	/^func udpaddrequal(a1,a2 *net.UDPAddr) bool{$/;"	f
+returnedfilesstruct	typesintern.go	/^type returnedfilesstruct struct {$/;"	d
+returnedfilesstruct	typesintern.go	/^type returnedfilesstruct struct {$/;"	t
+rfs	gossiperfiles.go	/^	var rfs *returnedfilesstruct$/;"	d
+rm	gossiperpacketprocess.go	/^	var rm *RumorMessage$/;"	d
+rms	gossiperpacketprocess.go	/^				var rms *RumorMessage$/;"	d
+rtimer	main.go	/^	var rtimer = flag.Int("rtimer", 0, "Timeout in seconds to send route rumors. 0 (default) means disable sending route rumors.")$/;"	d
+rumordforwardorigin	gossiperpacketprocess.go	/^	var rumordforwardorigin string$/;"	d
+rumorforwardid	gossiperpacketprocess.go	/^	var rumorforwardid uint32$/;"	d
+search	typesintern.go	/^type search struct {$/;"	d
+search	typesintern.go	/^type search struct {$/;"	t
+searchRequestDuplicate	gossipersearch.go	/^func (g *Gossiper) searchRequestDuplicate(sr *SearchRequest) bool {$/;"	d
+searchRequestDuplicate	gossipersearch.go	/^func (g *Gossiper) searchRequestDuplicate(sr *SearchRequest) bool {$/;"	f
+searchrequestequal	typesutil.go	/^func searchrequestequal(a1, a2 *SearchRequest) bool {$/;"	d
+searchrequestequal	typesutil.go	/^func searchrequestequal(a1, a2 *SearchRequest) bool {$/;"	f
+sendAllchunkRequest	gossipercomm.go	/^func (g *Gossiper) sendAllchunkRequest(metacontent []byte, chunkn int, dest string, rfi *lockedSearchResult) {$/;"	d
+sendAllchunkRequest	gossipercomm.go	/^func (g *Gossiper) sendAllchunkRequest(metacontent []byte, chunkn int, dest string, rfi *lockedSearchResult) {$/;"	f
+sendAllchunkRequestFromSearch	gossipercomm.go	/^func (g *Gossiper) sendAllchunkRequestFromSearch(file *returnedfilesstruct, metacontent []byte, rfi *lockedSearchResult) {$/;"	d
+sendAllchunkRequestFromSearch	gossipercomm.go	/^func (g *Gossiper) sendAllchunkRequestFromSearch(file *returnedfilesstruct, metacontent []byte, rfi *lockedSearchResult) {$/;"	f
+sendDirect	gossipercomm.go	/^func (g *Gossiper) sendDirect(pack *GossipPacket, dest string) {$/;"	d
+sendDirect	gossipercomm.go	/^func (g *Gossiper) sendDirect(pack *GossipPacket, dest string) {$/;"	f
+sendRepartitSearchRequest	gossipercomm.go	/^func (g *Gossiper) sendRepartitSearchRequest(sr *SearchRequest, indexNot int) {$/;"	d
+sendRepartitSearchRequest	gossipercomm.go	/^func (g *Gossiper) sendRepartitSearchRequest(sr *SearchRequest, indexNot int) {$/;"	f
+sendRumorMonger	gossipercomm.go	/^func (g *Gossiper) sendRumorMonger(rumor *RumorMessage, indexNot int, addrudp *net.UDPAddr) {$/;"	d
+sendRumorMonger	gossipercomm.go	/^func (g *Gossiper) sendRumorMonger(rumor *RumorMessage, indexNot int, addrudp *net.UDPAddr) {$/;"	f
+sendStatPacket	gossipercomm.go	/^func (g *Gossiper) sendStatPacket(addrudp *net.UDPAddr) {$/;"	d
+sendStatPacket	gossipercomm.go	/^func (g *Gossiper) sendStatPacket(addrudp *net.UDPAddr) {$/;"	f
+sendTLCMonger	gossipercomm.go	/^func (g *Gossiper) sendTLCMonger(tlc *TLCMessage, indexNot int, addrudp *net.UDPAddr) {$/;"	d
+sendTLCMonger	gossipercomm.go	/^func (g *Gossiper) sendTLCMonger(tlc *TLCMessage, indexNot int, addrudp *net.UDPAddr) {$/;"	f
+sendTLCunconfirmed	gossipercomm.go	/^func (g *Gossiper) sendTLCunconfirmed(tlc *TLCMessage) {$/;"	d
+sendTLCunconfirmed	gossipercomm.go	/^func (g *Gossiper) sendTLCunconfirmed(tlc *TLCMessage) {$/;"	f
+simple	main.go	/^	var simple = flag.Bool("simple", false, "run gossiper in simple broadcast mode")$/;"	d
+sl	gossiperfiles.go	/^			var sl *SearchResult$/;"	d
+sl	gossiperpacketprocess.go	/^						var sl *SearchResult$/;"	d
+stubtim	main.go	/^	var stubtim = flag.Int("stubbornTimeout", 5, "Time to resend BlockPublish. (default 5)")$/;"	d
+temp	webhandler.go	/^				var temp *SearchResult$/;"	d
+threadGossip	thread.go	/^func (g *Gossiper) threadGossip(wg *sync.WaitGroup) {$/;"	d
+threadGossip	thread.go	/^func (g *Gossiper) threadGossip(wg *sync.WaitGroup) {$/;"	f
+threadUIcomplet	thread.go	/^func (g *Gossiper) threadUIcomplet(wg *sync.WaitGroup) {$/;"	d
+threadUIcomplet	thread.go	/^func (g *Gossiper) threadUIcomplet(wg *sync.WaitGroup) {$/;"	f
+threadUIsimple	thread.go	/^func (g *Gossiper) threadUIsimple(wg *sync.WaitGroup) {$/;"	d
+threadUIsimple	thread.go	/^func (g *Gossiper) threadUIsimple(wg *sync.WaitGroup) {$/;"	f
+threadUIweb	thread.go	/^func (g *Gossiper) threadUIweb() {$/;"	d
+threadUIweb	thread.go	/^func (g *Gossiper) threadUIweb() {$/;"	f
+tlcm	gossiperpacketprocess.go	/^	var tlcm *TLCMessage$/;"	d
+tlcms	gossiperpacketprocess.go	/^				var tlcms *TLCMessage$/;"	d
+udpaddrequal	typesutil.go	/^func udpaddrequal(a1, a2 *net.UDPAddr) bool {$/;"	d
+udpaddrequal	typesutil.go	/^func udpaddrequal(a1, a2 *net.UDPAddr) bool {$/;"	f
 uiport	client/main.go	/^	var uiport = flag.String("UIPort", "8080", "port for the UI client (default \\"8080\\")")$/;"	d
-uiport	main.go	/^	var uiport=flag.String("UIPort","8080","port for the UI client (default \\"8080\\")")$/;"	d
-uname	gossiperutil.go	/^	var uname string$/;"	d
+uiport	main.go	/^	var uiport = flag.String("UIPort", "8080", "port for the UI client (default \\"8080\\")")$/;"	d
+uname	gossiperfiles.go	/^	var uname string$/;"	d
 update	html/script.js	/^function update() {$/;"	f
-update	html/script_priv.js	/^function update() {$/;"	f
+update	html/scriptpriv.js	/^function update() {$/;"	f
+update.obj.dest	html/scriptpriv.js	/^var obj={$/;"	p
 wg	main.go	/^	var wg sync.WaitGroup$/;"	d

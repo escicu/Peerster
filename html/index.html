@@ -16,12 +16,20 @@
     <tr>
       <td><div id="peers" class="scroll box">  </div></td>
       <td><div id="chat" class="scroll box"> </div></td>
-      <td><div id="advanced">
+      <td><div id="advanced" class="scroll">
         <form class="inform" method="post">
         <input type="file" name="file" id="selectfile" value="Share File..."><br />
         <input type="submit" name="sharefile" value="Share File...">
         </form>
         <br /><br />
+          <form class="inform" method="post">
+          <input type="input" name="keyword" id="keyword" value=""><br />
+          <input type="submit" name="search" value="Search">
+          </form>
+          <div id="searchres" class="box">  </div>
+          <br /><br />
+          <div id="rawlog" class="scroll box">  </div>
+          <br /><br />
       </div></td>
       <td><div id="origin" class="scroll box"> </div></td>
     </tr>

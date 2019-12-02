@@ -5,13 +5,22 @@
   <title>Peerster</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="script_priv.js"></script>
+  <script src="scriptpriv.js"></script>
 </head>
 <body>
 
   <table>
       <tr>
-        <td></td>
+        <td><div id="chat" class="scroll box"> </div></td>
+        <td>
+          <form class="inform" method="post">
+              <input type="text" name="filename" id="filename" placeholder="filename"/>
+              <input type="text" name="metahash" id="metahash" placeholder="metahash" maxlength="64"/>
+              <input type="submit" name="down" value="Download">
+          </form>
+        </td>
+      </tr>
+      <tr>
         <td>
           <form class="inform" method="post">
               <textarea name="message" id="sendpriv"></textarea>
@@ -19,19 +28,7 @@
           </form>
         </td>
       </tr>
-      <tr>
-        <td></td>
-        <td>
-          <form class="inform" method="post">
-              <input type="text" name="filename" id="filename"/>
-              <input type="text" name="metahash" id="metahash" maxlength="64"/>
-              <input type="submit" name="down" value="Download">
-          </form>
-        </td>
-      </tr>
   </table>
-
-
 
 </body>
 </html>

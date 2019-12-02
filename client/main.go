@@ -14,6 +14,8 @@ type Message struct {
 	Destination *string
 	File        *string
 	Request     *[]byte
+	Keywords    *string
+	Budget      *uint64
 }
 
 func SendMessageClient(message *Message, con net.Conn) {
@@ -32,12 +34,15 @@ func SendMessageClient(message *Message, con net.Conn) {
 
 func main() {
 
-	bitflagpresent:= uint8(0)
+	bitflagpresent := uint8(0)
 	var uiport = flag.String("UIPort", "8080", "port for the UI client (default \"8080\")")
 	var dest = flag.String("dest", "", "destination for the private message; ​ can be omitted")
 	var msg = flag.String("msg", "", "message to be sent; if the -dest flag is present, this is a private message, otherwise it’s a rumor message")
 	var file = flag.String("file", "", "file to be indexed by the gossiper")
 	var req = flag.String("request", "", "request a chunk or metafile of this hash")
+	var key = flag.String("keywords", "", "keywords to search")
+	var bud = flag.Uint64("budget", 0, "")
+
 	flag.Parse()
 	flag.Visit(func(arg1 *flag.Flag) {
 		switch arg1.Name {
@@ -51,6 +56,10 @@ func main() {
 			bitflagpresent = bitflagpresent | 8
 		case "request":
 			bitflagpresent = bitflagpresent | 16
+		case "keywords":
+			bitflagpresent = bitflagpresent | 32
+		case "budget":
+			bitflagpresent = bitflagpresent | 64
 
 		}
 	})
@@ -71,6 +80,15 @@ func main() {
 	case 9:
 		mess := &Message{Text: *msg, Destination: dest, File: file, Request: nil}
 		SendMessageClient(mess, con)
+	case 25:
+		h, err := hex.DecodeString(*req)
+		if err != nil {
+			fmt.Printf("ERROR (Unable to decode hex hash)​.\n")
+			os.Exit(1)
+		} else {
+			mess := &Message{Text: *msg, Destination: dest, File: file, Request: &h}
+			SendMessageClient(mess, con)
+		}
 	case 27:
 		h, err := hex.DecodeString(*req)
 		if err != nil {
@@ -80,9 +98,15 @@ func main() {
 			mess := &Message{Text: *msg, Destination: dest, File: file, Request: &h}
 			SendMessageClient(mess, con)
 		}
+	case 33:
+		mess := &Message{Keywords: key, Budget: bud}
+		SendMessageClient(mess, con)
+	case 97:
+		mess := &Message{Keywords: key, Budget: bud}
+		SendMessageClient(mess, con)
 	default:
-			fmt.Printf("ERROR (Bad argument combination).\n")
-			os.Exit(1)
+		fmt.Printf("ERROR (Bad argument combination).\n")
+		os.Exit(1)
 	}
 
 }
